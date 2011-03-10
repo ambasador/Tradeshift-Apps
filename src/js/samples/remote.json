@@ -4,7 +4,7 @@
     "vendor_id":"Tradeshift",
     "app_id":"RemoteWeather",
     "version":"0.0.1",
-    "comments":"This application demos how to do remote JSON calls, and interact with app settings (storage).",
+    "comments":"This application demos how to do remote JSON calls, and interact with app settings (storage)",
     "default_locale":"en-GB",
     "locales":{
         "en-GB":{
