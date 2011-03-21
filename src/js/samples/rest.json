@@ -6,10 +6,19 @@
     "version":"0.0.1",
     "comments":"Testing Tradeshift REST API access",
     "default_locale":"en-GB",
-    "consumer_key":"Tradeshift-account-testkey",
+    "capabilities":{
+        "access":["document_view",
+            "document_create",
+            "document_send",
+            "document_delete",
+            "network_view",
+            "network_create",
+            "network_delete"
+        ]
+    },
     "locales":{
         "en-GB":{
-            "app_name":"Weather in CPH",
+            "app_name":"Tradeshift API",
             "app_desc":"Test remote!"
         }
     },
