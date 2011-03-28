@@ -1,7 +1,7 @@
 {
     "manifest_version": "1.0",
     "tradeshift_version": "2.0",
-    "vendor_id": "Tradeshift",
+    "vendor_id": "Wunderbyte",
     "app_id": "DataInspector",
     "version": "0.0.1",
     "comments": "Inspect RDF data",
@@ -32,7 +32,6 @@
             },
             "capabilities": {
                 "data": {
-                    "debug": true,
                     "inspect": true
                 }
             },
