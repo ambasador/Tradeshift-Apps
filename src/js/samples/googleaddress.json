@@ -14,8 +14,8 @@
 	},
 	"locales":{
 		"en-GB":{
-			"app_name":"My App (Beta)",
-			"app_desc":"This is my Tradeshift app."
+			"app_name":"Google Addressbook Import",
+			"app_desc":"This application demonstrates how to connect with your Google Contact list over OAuth, and import contacts as Tradeshift manual connections."
 		}
 	},
 	"images":{
