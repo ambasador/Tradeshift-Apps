@@ -1,10 +1,10 @@
 {
     "manifest_version": "1.0",
-    "tradeshift_version": "2.0",
+    "tradeshift_version": "3.0",
     "vendor_id": "MoneyCompany",
     "app_id": "InstantLoans",
     "version": "0.0.1",
-    "comments": "Comment on anything. Comments are private.",
+    "comments": "YOU SHOULD ALSO ACTIVATE CREDIT RATING APP",
     "default_locale": "en-GB",
     "locales": {
         "en-GB": {
@@ -30,17 +30,14 @@
                 "prepend": ".rightcol"
             },
             "capabilities": {
-                "system": {
-                    "alert": true
-                },
                 "data": {
                     "getDatasource": true
                 }
             },
             "code": {
-                "css": ".MoneyCompany.InstantLoans.DashboardBox%20h2%20%7B%0A%09position%3A%20relative%3B%0A%09padding-left%3A%2055px%3B%0A%7D%0A.MoneyCompany.InstantLoans.DashboardBox%20h2%20img%20%7B%0A%09position%3A%20absolute%3B%0A%09left%3A%200%3B%0A%09top%3A%20-8px%3B%0A%7D",
-                "js": "%2F**%0A%20*%20The%20lib%20object%20is%20configured%20with%20properties%20and%0A%20*%20methods%20according%20to%20the%20components%20%22capabilities%22.%0A%20*%20%40param%20%7Bobject%7D%20lib%0A%20*%2F%0Afunction%20Component%20(%20lib%20)%20%7B%0A%09%0A%09return%20%7B%0A%09%09%0A%09%09%2F**%0A%09%09%20*%20Invoked%20when%20component%20instance%20is%20first%20shown.%0A%09%09%20*%20%40param%20%7Bobject%7D%20dom%20The%20ADsafe%20dom%20wrapper%0A%09%09%20*%2F%0A%09%09onload%20%3A%20function%20(%20dom%20)%20%7B%0A%09%09%0A%09%09%09function%20onRating%20(%20sub%2C%20pre%2C%20obj%2C%20isAssert%20)%20%7B%0A%09%09%09%09if%20(%20isAssert%20)%20%7B%0A%09%09%09%09%09var%20rating%20%3D%20obj.toUpperCase%20()%3B%0A%09%09%09%09%09var%20text%20%3D%20%22Congratulations!%20With%20a%20rating%20of%20%22%20%2B%20rating%20%2B%20%22%2C%20%20how%20can%20we%20say%20no%3F%22%3B%20%0A%09%09%09%09%09%0A%09%09%09%09%09var%20p%20%3D%20dom.q%20(%20%22p%22%20)%3B%0A%09%09%09%09%09p.empty%20().append%20(%20%20dom.text%20(%20text%20))%3B%0A%09%09%09%09%7D%0A%09%09%09%7D%0A%09%0A%09%09%09lib.ts.data.getDatasource%20().observe%20(%20%0A%09%09%09%09%22urn%3Atradeshift%3AActor%22%2C%20%0A%09%09%09%09%22http%3A%2F%2Fwww.creditrating.com%2Fns%23rating%22%2C%20%0A%09%09%09%09null%2C%20%0A%09%09%09%09onRating%20%0A%09%09%09)%3B%0A%09%09%7D%0A%09%7D%3B%0A%7D",
-                "xhtml": "%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%0A%09%3Chead%3E%0A%09%09%3Ctitle%3EComponent%3C%2Ftitle%3E%0A%09%3C%2Fhead%3E%0A%09%3Cbody%3E%0A%09%09%3Cdiv%20class%3D%22grey%20border%20box%20r_all%22%3E%0A%09%09%09%3Ch2%3E%0A%09%09%09%09%3Cimg%20src%3D%22%24%7Bimages.instantloan.png%7D%22%20%2F%3E%0A%09%09%09%09%3Cspan%3E%24%7Blocales.app_name%7D%3C%2Fspan%3E%0A%09%09%09%3C%2Fh2%3E%0A%09%09%09%3Cp%3ETo%20qualify%20for%20instant%20loans%2C%20you%20must%20obtain%20a%20credit%20rating...%3C%2Fp%3E%0A%09%09%09%3Cp%20class%3D%22hidden%22%3E%0A%09%09%09%09%3Ca%20href%3D%22%23%22%3EGet%20%2410.000%20now!%3C%2Fa%3E%0A%09%09%09%3C%2Fp%3E%0A%09%09%3C%2Fdiv%3E%0A%09%3C%2Fbody%3E%0A%3C%2Fhtml%3E"
+                "css": "%2F*%20%0A%20*%20Rules%20will%20be%20prefixed%20with%20a%20selector%20to%20match%20the%20component.%0A%20*%20%5Bcss%20rule%5D%20will%20become%20.vendorid.appid.componentid%20%5Bcss%20rule%5D.%0A%20*%20To%20style%20the%20component%20itself%2C%20use%20the%20simple%20selector%20%22this%22.%0A%20*%2F%0Athis%20%7B%0A%09display%3A%20block%3B%0A%7D%0Ah2%20%7B%0A%09position%3A%20relative%3B%0A%09padding-left%3A%2055px%3B%0A%7D%0Ah2%20img%20%7B%0A%09position%3A%20absolute%3B%0A%09left%3A%200%3B%0A%09top%3A%20-8px%3B%0A%7D",
+                "js": "%2F**%0A%20*%20The%20lib%20object%20is%20configured%20with%20properties%20and%0A%20*%20methods%20according%20to%20the%20components%20%22capabilities%22.%0A%20*%20%40param%20%7Bobject%7D%20lib%0A%20*%2F%0Afunction%20Component%20(%20lib%20)%20%7B%0A%09%0A%09return%20%7B%0A%09%09%0A%09%09%2F**%0A%09%09%20*%20Invoked%20when%20component%20instance%20is%20first%20shown.%0A%09%09%20*%20%40param%20%7Bobject%7D%20dom%20The%20ADsafe%20dom%20wrapper%0A%09%09%20*%2F%0A%09%09onload%20%3A%20function%20(%20dom%20)%20%7B%0A%09%09%0A%09%09%09function%20onRating%20(%20sub%2C%20pre%2C%20obj%2C%20isAssert%20)%20%7B%0A%09%09%09%09if%20(%20isAssert%20)%20%7B%0A%09%09%09%09%09var%20rating%20%3D%20obj.toUpperCase%20()%3B%0A%09%09%09%09%09var%20text%20%3D%20%22Congratulations!%20With%20a%20rating%20of%20%22%20%2B%20rating%20%2B%20%22%2C%20%20how%20can%20we%20say%20no%3F%22%3B%20%09%0A%09%09%09%09%09var%20p%20%3D%20dom.q%20(%20%22h2%20%2B%20p%22%20)%3B%0A%09%09%09%09%09p.empty%20().append%20(%20%20dom.text%20(%20text%20))%3B%0A%09%09%09%09%7D%0A%09%09%09%7D%0A%09%0A%09%09%09lib.ts.data.getDatasource%20().observe%20(%20%0A%09%09%09%09%22urn%3Atradeshift%3AActor%22%2C%20%0A%09%09%09%09%22http%3A%2F%2Fwww.creditrating.com%2Fns%23rating%22%2C%20%0A%09%09%09%09null%2C%20%0A%09%09%09%09onRating%20%0A%09%09%09)%3B%0A%09%09%7D%0A%09%7D%3B%0A%7D",
+                "xhtml": "%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%0A%09%3Chead%3E%0A%09%09%3Ctitle%3EComponent%3C%2Ftitle%3E%0A%09%3C%2Fhead%3E%0A%09%3Cbody%3E%0A%09%09%3Cdiv%20class%3D%22grey%20border%20box%20r_all%22%3E%0A%09%09%09%3Cp%20class%3D%22yellow%20text_c%22%3E%3Csmall%3EYou%20should%20also%20activate%20Credit%20Rating%3C%2Fsmall%3E%3C%2Fp%3E%0A%09%09%09%3Ch2%3E%0A%09%09%09%09%3Cimg%20src%3D%22%24%7Bimages.instantloan.png%7D%22%20%2F%3E%0A%09%09%09%09%3Cspan%3E%24%7Blocales.app_name%7D%3C%2Fspan%3E%0A%09%09%09%3C%2Fh2%3E%0A%09%09%09%3Cp%3ETo%20qualify%20for%20instant%20loans%2C%20you%20must%20obtain%20a%20credit%20rating...%3C%2Fp%3E%0A%09%09%3C%2Fdiv%3E%0A%09%3C%2Fbody%3E%0A%3C%2Fhtml%3E"
             }
         }
     }
