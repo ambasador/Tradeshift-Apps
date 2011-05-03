@@ -3,7 +3,7 @@
     "tradeshift_version": "2.0",
     "vendor_id": "TradeshiftDaBusiness",
     "app_id": "GoogleAddressbook",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "comments": "This application demonstrates how to connect with your Google Contact list over OAuth, and import contacts as Tradeshift manual connections. If you want to run the app yourself, make sure to replace ALL occurrances of the vendor id with yours.",
     "default_locale": "en-US",
     "config": {
