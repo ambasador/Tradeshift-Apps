@@ -35,7 +35,7 @@
             }
         },
         "simpleframe": {
-            "activation": "/app/Tradeshift.TestIframe",
+            "activation": "/app/${app.vendor_id}.${app.app_id}",
             "integration": {
                 "append": "#mainframe"
             },
