@@ -1,8 +1,8 @@
 {
     "manifest_version": "1.0",
     "tradeshift_version": "2.0",
-    "vendor_id": "TradeshiftDaBusiness",
-    "app_id": "GoogleAddressbook",
+    "vendor_id": "Tradeshift",
+    "app_id": "GoogleContacts",
     "version": "0.0.19",
     "comments": "This application demonstrates how to connect with your Google Contact list over OAuth, and import contacts as Tradeshift manual connections. If you want to run the app yourself, make sure to replace ALL occurrances of the vendor id with yours.",
     "default_locale": "en-US",
@@ -69,12 +69,12 @@
             "selectGroup": "Kies de Google contactpersoon-groep om uit te importeren:"
         },
         "da": {
-            "app_name": "Google Adressebog Import",
-            "app_desc": "Denne App forbinder med dit Google konto, og kan så kopiere kontaktpersoner til Tradeshift kontakter.",
+            "app_name": "Google Kontakter Import",
+            "app_desc": "Denne App forbinder med din Google konto, og kan så importere kontaktpersoner til Tradeshift kontakter.",
             "loading": "Forbindelse med Google bliver tjekket...",
-            "setup1": "Velkommen til Google Adressebog Import app'en. Før du kan importer dinne kontaktpersoner fra Google, skal forbindelsen til din Google konto oprettes. Følg",
+            "setup1": "Velkommen til Google Kontakter Import app'en. Før du kan importer dinne kontaktpersoner fra Google, skal forbindelsen til din Google konto oprettes. Følg",
             "thislink": "dette link",
-            "setup2": "for at sette app'en op.",
+            "setup2": "for at sætte app'en op.",
             "linkWithGoogle": "Forbind til Google",
             "group.select1": "Vælg Google kontaktpersonerne der skal kopieres til Tradeshift, eller ",
             "group.select2": "vælg en anden gruppe",
