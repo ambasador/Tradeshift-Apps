@@ -38,7 +38,7 @@
                 },
                 "remote": {
                     "getRequest": {
-                        "worldweather": "http://www.worldweatheronline.com/feed/weather.ashx?format=json&num_of_days=2&key=f2ed7fbe3b104427110803",
+                        "worldweather": "http://free.worldweatheronline.com/feed/weather.ashx?format=json&num_of_days=2&key=f2ed7fbe3b104427110803",
                         "geolocation": "http://www.geoplugin.net/json.gp",
                         "yahooanswers": "http://answers.yahooapis.com/AnswersService/V1/questionSearch?appid=YahooDemo&query=cars&output=json"
                     }
