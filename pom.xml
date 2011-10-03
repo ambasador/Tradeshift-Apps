@@ -6,6 +6,7 @@
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Tradeshift example Apps and example API use.</name>
+	<description>Example apps for the Tradeshift API</description>
 	<properties>
 		<jersey.version>1.2</jersey.version>
 	</properties>
@@ -99,6 +100,7 @@
 		      </plugin>
 		      
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.6</version>
                 <executions>
@@ -109,9 +111,12 @@
                         </goals>
                         <configuration>
                             <target>
-                                <taskdef name="pack200" classname="org.jdesktop.deployment.ant.pack200.Pack200Task" />
+                                <taskdef name="pack200" classname="org.jdesktop.deployment.ant.pack200.Pack200Task" classpathref="maven.plugin.classpath" />
                                 
-                                <pack200 src="target/${project.artifactId}-${project.version}.jar" destfile="target/${project.artifactId}-${project.version}.gz.pack" />
+                                <pack200 src="target/${project.artifactId}-${project.version}.jar" destfile="target/${project.artifactId}-${project.version}.repacked.jar" repack="true"/>
+                                <signjar jar="target/${project.artifactId}-${project.version}.repacked.jar"  alias="tradeshift" keystore="${user.home}/tradeshiftapps.jks" storepass="tradeshift" />
+                                    
+                                <pack200 src="target/${project.artifactId}-${project.version}.repacked.jar" destfile="target/${project.artifactId}-${project.version}.pack.gz" gzipoutput="true" keepfileorder="true" deflatehint="keep"/>
                             </target>
                         </configuration>
                     </execution>
@@ -125,25 +130,6 @@
                 </dependencies>
             </plugin>
 
-          <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-jarsigner-plugin</artifactId>
-	        <version>1.2</version>
-	        <executions>
-	          <execution>
-	            <id>sign</id>
-	            <goals>
-	              <goal>sign</goal>
-	            </goals>
-	          </execution>
-	        </executions>
-	        <configuration>
-	          <keystore>${user.home}/tradeshiftapps.jks</keystore>
-	          <alias>tradeshift</alias>
-	          <storepass>tradeshift</storepass>
-	          <keypass>tradeshift</keypass>
-	        </configuration>
-	      </plugin>
 		</plugins>
 	</build>
 	<dependencies>
