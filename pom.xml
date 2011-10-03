@@ -10,6 +10,17 @@
 		<jersey.version>1.2</jersey.version>
 	</properties>
 	<build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.groovy</include>
+                </includes>
+            </resource>
+        </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -19,6 +30,71 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+                        <projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildCommand>
+                            <name>org.springframework.ide.eclipse.core.springbuilder</name>
+                        </buildCommand>
+                    </additionalBuildcommands>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-shade-plugin</artifactId>
+		        <version>1.4</version>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>shade</goal>
+		            </goals>
+		            <configuration>
+		              <transformers>
+		                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+		                  <mainClass>com.tradeshift.explorer.RESTExplorer</mainClass>
+		                </transformer>
+		              </transformers>
+		              <artifactSet>
+		                  <excludes>
+		                      <exclude>org.codehaus.jettison:*</exclude>
+		                      <exclude>antlr:*</exclude>
+		                      <exclude>javax.xml.bind:*</exclude>
+		                      <exclude>javax.xml.stream:*</exclude>
+		                      <exclude>stax:*</exclude>
+		                  </excludes>
+		              </artifactSet>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
+
+          <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-jarsigner-plugin</artifactId>
+	        <version>1.2</version>
+	        <executions>
+	          <execution>
+	            <id>sign</id>
+	            <goals>
+	              <goal>sign</goal>
+	            </goals>
+	          </execution>
+	        </executions>
+	        <configuration>
+	          <keystore>${user.home}/tradeshiftapps.jks</keystore>
+	          <alias>tradeshift</alias>
+	          <storepass>tradeshift</storepass>
+	          <keypass>tradeshift</keypass>
+	        </configuration>
+	      </plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -58,5 +134,20 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.8.5</version>
+        </dependency>
 	</dependencies>
 </project>
