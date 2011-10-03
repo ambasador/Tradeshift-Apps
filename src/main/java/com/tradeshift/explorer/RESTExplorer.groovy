@@ -93,8 +93,10 @@ class RESTExplorer {
 					label('Request URL', constraints: gbc(gridx: 0, gridy: 4, fill: h))
 					textField(text: bind('url', source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 4, gridwidth: GridBagConstraints.REMAINDER, fill: h))
 
-					button('View documentation', constraints: gbc(gridx: 0, gridy: 5, gridwidth: 2, anchor: GridBagConstraints.LINE_START), border: emptyBorder([0, 0, 0, 1]), foreground: Color.BLUE, cursor: Cursor.getPredefinedCursor(Cursor.HAND_CURSOR), contentAreaFilled: false, focusPainted: false, actionPerformed: { Desktop.desktop.browse(URI.create("http://developer.tradeshift.com/rest-api/")) })
+					button('View API documentation', constraints: gbc(gridx: 0, gridy: 5, gridwidth: 2, anchor: GridBagConstraints.LINE_START), border: emptyBorder([0, 0, 0, 1]), foreground: Color.BLUE, cursor: Cursor.getPredefinedCursor(Cursor.HAND_CURSOR), contentAreaFilled: false, focusPainted: false, actionPerformed: { Desktop.desktop.browse(URI.create("http://developer.tradeshift.com/rest-api/")) })
 					button(text: 'Execute', actionPerformed: { executeRequest() }, enabled: bind { model.url && model.companyAccountId && model.consumerKey && model.consumerSecret && (!model.threelegged || (model.token && model.tokenSecret)) }, constraints: gbc(gridx: 3, gridy: 5, fill: h))
+					
+					label('You can access your own account by installing the "API Access to own Account" app, available in the Appstore', constraints: gbc(gridx: 0, gridy: 6, gridwidth: GridBagConstraints.REMAINDER))
 				}
 
 				splitPane(constraints: BorderLayout.CENTER, orientation: JSplitPane.VERTICAL_SPLIT, border: emptyBorder(10), dividerLocation: 400) {
