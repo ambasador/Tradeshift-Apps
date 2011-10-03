@@ -1,6 +1,9 @@
 package com.tradeshift.explorer
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.GridBagConstraints;
 
 import groovy.swing.SwingBuilder
@@ -89,11 +92,12 @@ class RESTExplorer {
 					
 					label('Request URL', constraints: gbc(gridx: 0, gridy: 4, fill: h))
 					textField(text: bind('url', source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 4, gridwidth: GridBagConstraints.REMAINDER, fill: h))
-					
+
+					button('View documentation', constraints: gbc(gridx: 0, gridy: 5, gridwidth: 2, anchor: GridBagConstraints.LINE_START), border: emptyBorder([0, 0, 0, 1]), foreground: Color.BLUE, cursor: Cursor.getPredefinedCursor(Cursor.HAND_CURSOR), contentAreaFilled: false, focusPainted: false, actionPerformed: { Desktop.desktop.browse(URI.create("http://developer.tradeshift.com/rest-api/")) })
 					button(text: 'Execute', actionPerformed: { executeRequest() }, enabled: bind { model.url && model.companyAccountId && model.consumerKey && model.consumerSecret && (!model.threelegged || (model.token && model.tokenSecret)) }, constraints: gbc(gridx: 3, gridy: 5, fill: h))
 				}
 
-				splitPane(constraints: BorderLayout.CENTER, orientation: JSplitPane.VERTICAL_SPLIT, border: emptyBorder(10)) {
+				splitPane(constraints: BorderLayout.CENTER, orientation: JSplitPane.VERTICAL_SPLIT, border: emptyBorder(10), dividerLocation: 400) {
 					tabPanel = tabbedPane(preferredSize: [100, 400]) {
 						panel(title: 'Request') {
 							borderLayout()
