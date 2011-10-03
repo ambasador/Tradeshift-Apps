@@ -1,9 +1,11 @@
 package com.tradeshift.explorer
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
 
 import groovy.swing.SwingBuilder
 
+import javax.swing.JSplitPane;
 import javax.swing.WindowConstants
 
 import org.codehaus.jackson.map.ObjectMapper
@@ -28,6 +30,7 @@ class RESTExplorer {
 	private OutputStream out
 	
 	def tabPanel
+	def builder = new SwingBuilder()
 	
 	def RESTExplorer() {
 		restClient = Client.create();
@@ -47,47 +50,51 @@ class RESTExplorer {
 	}
 	
 	def start() {
-		SwingBuilder.build() {
-			frame(title: 'Tradeshift REST API Explorer', size: [500, 700], visible: true, defaultCloseOperation:WindowConstants.EXIT_ON_CLOSE) {
+		def h = GridBagConstraints.HORIZONTAL
+		builder.edt {
+			lookAndFeel("org.pushingpixels.substance.api.skin.SubstanceNebulaLookAndFeel")
+			frame(title: 'Tradeshift REST API Explorer', size: [800, 700], visible: true, defaultCloseOperation:WindowConstants.EXIT_ON_CLOSE) {
 				borderLayout()
 				
-				panel(constraints: BorderLayout.NORTH) {
-					gridLayout(rows: 10, cols: 2)
+				panel(constraints: BorderLayout.NORTH, border: emptyBorder(10)) {
+					gridBagLayout()
 					
-					label 'Company account ID:'
-					textField(text: bind('companyAccountId', validator: { try {UUID.fromString(it) } catch (Exception e) {} }, source: model, mutual: true))
+					label('Company account ID:', constraints: gbc(gridx: 0, gridy: 0, fill: h))
+					textField(text: bind('companyAccountId', validator: { try {UUID.fromString(it) } catch (Exception e) {} }, source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 0, fill: h))
+					
+					label('3-legged', border: emptyBorder([0, 5, 0, 0]), constraints: gbc(gridx: 2, gridy: 0, fill: h))
+					checkBox(selected: bind('threelegged', source: model, mutual: true), constraints: gbc(gridx: 3, gridy: 0, fill: h))
+					
+
+					label('Consumer key:', constraints: gbc(gridx: 0, gridy: 1, fill: h))
+					textField(text: bind('consumerKey', source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 1, fill: h))
+					
+					label('Token', border: emptyBorder([0, 5, 0, 0]), constraints: gbc(gridx: 2, gridy: 1, fill: h))
+					textField(text: bind('token', source: model, mutual: true), enabled: bind { model.threelegged }, constraints: gbc(gridx: 3, gridy: 1, fill: h))
+					
+					label('Consumer secret', constraints: gbc(gridx: 0, gridy: 2, fill: h))
+					textField(text: bind('consumerSecret', source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 2, fill: h))
+
+										
+					label('Token secret', border: emptyBorder([0, 5, 0, 0]), constraints: gbc(gridx: 2, gridy: 2, fill: h))
+					textField(text: bind('tokenSecret', source: model, mutual: true), enabled: bind { model.threelegged }, constraints: gbc(gridx: 3, gridy: 2, fill: h))
+					
+					
 	
-					label 'Consumer key:'
-					textField(text: bind('consumerKey', source: model, mutual: true))
+					label('Method', constraints: gbc(gridx: 0, gridy: 3, fill: h))
+					comboBox(items: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD'], selectedItem: bind('method', source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 3, anchor: GridBagConstraints.LINE_START))
 					
-					label 'Consumer secret'
-					textField(text: bind('consumerSecret', source: model, mutual: true))
+					label('Return type', constraints: gbc(gridx: 2, gridy: 3, fill: h))
+					comboBox(items: ['application/json', 'text/xml', 'text/plain'], selectedItem: bind('accept', source: model, mutual: true), constraints: gbc(gridx: 3, gridy: 3, anchor: GridBagConstraints.LINE_START))
 					
-					label '3-legged'
-					checkBox(selected: bind('threelegged', source: model, mutual: true))
+					label('Request URL', constraints: gbc(gridx: 0, gridy: 4, fill: h))
+					textField(text: bind('url', source: model, mutual: true), constraints: gbc(gridx: 1, gridy: 4, gridwidth: GridBagConstraints.REMAINDER, fill: h))
 					
-					label 'Token'
-					textField(text: bind('token', source: model, mutual: true), enabled: bind { model.threelegged })
-					
-					label 'Token secret'
-					textField(text: bind('tokenSecret', source: model, mutual: true), enabled: bind { model.threelegged })
-	
-					label 'Method'
-					comboBox(items: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD'], selectedItem: bind('method', source: model, mutual: true))
-					
-					label 'Return type'
-					comboBox(items: ['application/json', 'text/xml', 'text/plain'], selectedItem: bind('accept', source: model, mutual: true))
-					
-					label 'Request URL'
-					textField(text: bind('url', source: model, mutual: true))
-					
-					button(text: 'Execute', actionPerformed: { executeRequest() }, enabled: bind { model.url && model.companyAccountId && model.consumerKey && model.consumerSecret && (!model.threelegged || (model.token && model.tokenSecret)) } )
+					button(text: 'Execute', actionPerformed: { executeRequest() }, enabled: bind { model.url && model.companyAccountId && model.consumerKey && model.consumerSecret && (!model.threelegged || (model.token && model.tokenSecret)) }, constraints: gbc(gridx: 3, gridy: 5, fill: h))
 				}
 
-				panel(constraints: BorderLayout.CENTER) {
-					borderLayout()
-					
-					tabPanel = tabbedPane(constraints: BorderLayout.CENTER) {
+				splitPane(constraints: BorderLayout.CENTER, orientation: JSplitPane.VERTICAL_SPLIT, border: emptyBorder(10)) {
+					tabPanel = tabbedPane(preferredSize: [100, 400]) {
 						panel(title: 'Request') {
 							borderLayout()
 							
