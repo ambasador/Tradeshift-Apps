@@ -4,7 +4,7 @@
 	<groupId>com.tradeshift</groupId>
 	<artifactId>Tradeshift-Apps</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Tradeshift example Apps and example API use.</name>
 	<description>Example apps for the Tradeshift API</description>
 	<properties>
@@ -153,6 +153,12 @@
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-json</artifactId>
 			<version>${jersey.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.activation</groupId>
+					<artifactId>activation</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey.contribs.jersey-oauth</groupId>

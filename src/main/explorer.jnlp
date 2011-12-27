@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp spec="1.0+" codebase="http://developer.tradeshift.com/wp-content/uploads/2011/10" href="">
+<jnlp spec="1.0+" codebase="http://developer.tradeshift.com/wp-content/uploads/2011/12" href="">
     <information>
         <title>Tradeshift REST Explorer</title>
         <vendor>Tradeshift</vendor>
@@ -8,7 +8,7 @@
     <resources>
         <property name="jnlp.packEnabled" value="true" />
         <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-        <jar href="Tradeshift-Apps-0.0.1-SNAPSHOT" main="true" />
+        <jar href="Tradeshift-Apps-0.0.2-SNAPSHOT" main="true" />
     </resources>
     <security>
       <all-permissions />
