@@ -148,7 +148,10 @@ class RESTExplorer {
 				res = getResource().get(ClientResponse.class)
 				break
 			case 'POST':
-	
+                def b = getResource()
+                if (model.contentType && model.body) {
+                    b = b.entity(model.body, model.contentType)
+                }
 				res = b.post(ClientResponse.class)
 				break
 			case 'DELETE':
